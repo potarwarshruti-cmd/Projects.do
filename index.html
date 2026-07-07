@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riyonabh - Personalized Crochet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide-icons"></script>
+    <style>
+        /* Using Inter font as per guidelines */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom styles for the app */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pacifico&display=swap');
+
+        .font-brand {
+            font-family: 'Pacifico', cursive;
+        }
+
+        /* Hide all sections by default */
+        .page-section {
+            display: none;
+        }
+        
+        /* Show the active section */
+        .page-section.active {
+            display: block;
+        }
+
+        /* Simple modal styles */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 40;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 50;
+        }
+        .modal-backdrop.active,
+        .modal.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Global Header -->
+    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-30">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Brand Logo -->
+                <a href="#home" class="text-3xl font-brand text-pink-600 nav-link">
+                    Riyonabh
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-gray-600 hover:text-pink-600 font-medium nav-link">Home</a>
+                    <a href="#new-products" class="text-gray-600 hover:text-pink-600 font-medium nav-link">New Products</a>
+                    <a href="#trending" class="text-gray-600 hover:text-pink-600 font-medium nav-link">Trending</a>
+                </div>
+
+                <!-- Icons & Login -->
+                <div class="flex items-center space-x-4">
+                    <a href="#cart" class="relative text-gray-600 hover:text-pink-600 nav-link">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <span id="cart-badge" class="absolute -top-2 -right-2 bg-pink-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                    </a>
+                    <a href="#login" class="bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-pink-700 transition-colors nav-link">
+                        Login
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-pink-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#home" class="block text-gray-600 hover:text-pink-600 font-medium nav-link">Home</a>
+                <a href="#new-products" class="block text-gray-600 hover:text-pink-600 font-medium nav-link">New Products</a>
+                <a href="#trending" class="block text-gray-600 hover:text-pink-600 font-medium nav-link">Trending</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Home Section -->
+        <section id="home-section" class="page-section active">
+            <!-- Hero Banner -->
+            <div class="relative bg-pink-100 overflow-hidden rounded-b-3xl">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+                    <div class="w-full md:w-1/2">
+                        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
+                            Personalized Crochet,
+                            <br>
+                            <span class="text-pink-600">Made Just For You.</span>
+                        </h1>
+                        <p class="mt-4 text-lg text-gray-700">
+                            From custom plushies to unique decor, tell us your vision and we'll craft it with love.
+                        </p>
+                        <a href="#new-products" class="nav-link mt-8 inline-block bg-pink-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-pink-700 transition-colors">
+                            Shop New Arrivals
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block absolute right-0 top-0 bottom-0 w-1/2">
+                    <!-- Using one of your images for the hero banner -->
+                    <img src="main.jpg" alt="Beautiful crochet items" class="h-full w-full object-cover">
+                </div>
+            </div>
+
+            <!-- Trending Products -->
+            <div id="trending" class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Trending Products</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <!-- Product Card 1: Luffy -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                        <img src="luffy1.jpg" alt="Crochet Luffy Plushie" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Luffy Plushie</h3>
+                            <p class="text-gray-600 mb-4">The future Pirate King, in cuddly crochet form!</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-pink-600">₹899</span>
+                                <a href="#product/1" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 2: Penguin -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                        <img src="peng.jpg" alt="Cute Penguin Plush" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Cute Penguin Plush</h3>
+                            <p class="text-gray-600 mb-4">An adorable penguin plush, perfect for winter cuddles.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-pink-600">₹749</span>
+                                <a href="#product/2" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 3: Red Ribbon Bag -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                        <img src="bag.jpg" alt="Red Ribbon Bag" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Red Ribbon Bag</h3>
+                            <p class="text-gray-600 mb-4">A gorgeous and attractive bag, perfect for parties.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-pink-600">₹1299</span>
+                                <a href="#product/3" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 4: Jellyfish -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                        <img src="jelly.jpg" alt="Bubblegum Jellyfish" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Bubblegum Jellyfish</h3>
+                            <p class="text-gray-600 mb-4">A cute hanging piece to brighten up any room.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-pink-600">₹499</span>
+                                <a href="#product/4" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 5: Flower Mala -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                        <img src="haar.jpg" alt="Crochet Flower Mala" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Flower Mala / Toran</h3>
+                            <p class="text-gray-600 mb-4">A beautiful, reusable decorative flower string.</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-2xl font-bold text-pink-600">₹699</span>
+                                <a href="#product/5" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Products -->
+            <div id="new-products" class="bg-pink-50 py-16">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">New Products</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                        <!-- Product Card 6: Sunflower in Pot -->
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                            <img src="smallpot.jpg" alt="Sunflower in Pot" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Sunflower in Pot</h3>
+                                <p class="text-gray-600 mb-4">A forever-bright sunflower for your desk or window.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-pink-600">₹399</span>
+                                    <a href="#product/6" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Card 7: Evil Eye Airpod Case -->
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                            <img src="case.jpg" alt="Evil Eye Airpod Case" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Evil Eye Airpod Case</h3>
+                                <p class="text-gray-600 mb-4">Protect your tech with this stylish, protective charm.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-pink-600">₹299</span>
+                                    <a href="#product/7" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Card 8: Flower Gajra -->
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                            <img src="gajra.jpg" alt="Crochet Flower Gajra" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Crochet Flower Gajra</h3>
+                                <p class="text-gray-600 mb-4">A beautiful, reusable hair accessory for special occasions.</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-pink-600">₹349</span>
+                                    <a href="#product/8" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Card 9: Mouse Plushie -->
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                            <img src="mouse.jpg" alt="Ballerina Mouse Plushie" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Ballerina Mouse Plushie</h3>
+                                <p class="text-gray-600 mb-4">A stunning and soft ballerina mouse, ready to dance!</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-pink-600">₹699</span>
+                                    <a href="#product/9" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Card 10: Wrapped Sunflower -->
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                            <img src="sunflower.jpg" alt="Best Seller Sunflower" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">"Best Seller" Sunflower</h3>
+                                <p class="text-gray-600 mb-4">A single, beautifully wrapped sunflower. Our best seller!</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-2xl font-bold text-pink-600">₹249</span>
+                                    <a href="#product/10" class="product-link text-pink-600 font-medium hover:text-pink-700">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Detail Section -->
+        <section id="product-section" class="page-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <!-- Product data will be injected here by JS -->
+                <div id="product-detail-content"></div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="login-section" class="page-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8">
+                    <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">Login</h2>
+                    <form id="login-form">
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="login-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="login-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                        </div>
+                        <button type="submit" class="w-full bg-pink-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-pink-700 transition-colors">
+                            Login
+                        </button>
+                        <p class="text-center text-gray-600 mt-4">
+                            Don't have an account? <a href="#signup" id="show-signup" class="text-pink-600 hover:underline font-medium">Sign Up</a>
+                        </p>
+                    </form>
+                    
+                    <form id="signup-form" class="hidden">
+                        <h2 class="text-3xl font-bold text-center text-gray-900 mb-6">Sign Up</h2>
+                        <div class="mb-4">
+                            <label for="signup-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="signup-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="signup-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="signup-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="signup-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                        </div>
+                        <button type="submit" class="w-full bg-pink-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-pink-700 transition-colors">
+                            Create Account
+                        </button>
+                        <p class="text-center text-gray-600 mt-4">
+                            Already have an account? <a href="#login" id="show-login" class="text-pink-600 hover:underline font-medium">Login</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart-section" class="page-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Your Shopping Cart</h2>
+                <div id="cart-items-container" class="mb-8">
+                    <!-- Cart items will be injected here by JS -->
+                    <p id="cart-empty-msg" class="text-gray-600 text-lg">Your cart is empty.</p>
+                </div>
+
+                <div id="cart-summary" class="hidden max-w-md ml-auto bg-white rounded-2xl shadow-xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">Order Summary</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-gray-700">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal">₹0</span>
+                        </div>
+                        <div class="flex justify-between text-gray-700">
+                            <span>Shipping</span>
+                            <span id="cart-shipping">₹0</span>
+                        </div>
+                        <div class="flex justify-between text-gray-900 font-bold text-xl pt-3 border-t">
+                            <span>Total</span>
+                            <span id="cart-total">₹0</span>
+                        </div>
+                    </div>
+                    <a href="#checkout" class="nav-link w-full mt-6 block text-center bg-pink-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-pink-700 transition-colors">
+                        Proceed to Checkout
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Section -->
+        <section id="checkout-section" class="page-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Checkout</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <!-- Shipping & Payment Form -->
+                    <div class="bg-white rounded-2xl shadow-xl p-8">
+                        <form id="checkout-form">
+                            <!-- Shipping Details -->
+                            <h3 class="text-2xl font-semibold mb-6">1. Shipping Details</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="col-span-2">
+                                    <label for="checkout-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" id="checkout-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="checkout-address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                    <input type="text" id="checkout-address" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                </div>
+                                <div>
+                                    <label for="checkout-city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                    <input type="text" id="checkout-city" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                </div>
+                                <div>
+                                    <label for="checkout-zip" class="block text-sm font-medium text-gray-700 mb-1">PIN Code</label>
+                                    <input type="text" id="checkout-zip" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                </div>
+                                <div class="col-span-2">
+                                    <label for="checkout-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                    <input type="tel" id="checkout-phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                </div>
+                            </div>
+
+                            <!-- Payment Details -->
+                            <h3 class="text-2xl font-semibold mt-10 mb-6">2. Payment Details</h3>
+                            <div class="space-y-4">
+                                <!-- Simplified for India: UPI/Card -->
+                                <div class="flex space-x-4">
+                                    <label class="flex items-center p-4 border border-gray-300 rounded-lg flex-1 cursor-pointer">
+                                        <input type="radio" name="payment-method" class="text-pink-600 focus:ring-pink-500" checked>
+                                        <span class="ml-3 font-medium">Credit/Debit Card</span>
+                                    </label>
+                                    <label class="flex items-center p-4 border border-gray-300 rounded-lg flex-1 cursor-pointer">
+                                        <input type="radio" name="payment-method" class="text-pink-600 focus:ring-pink-500">
+                                        <span class="ml-3 font-medium">UPI</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="checkout-card" class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                    <input type="text" id="checkout-card" placeholder="**** **** **** ****" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="checkout-expiry" class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                        <input type="text" id="checkout-expiry" placeholder="MM/YY" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                    </div>
+                                    <div>
+                                        <label for="checkout-cvc" class="block text-sm font-medium text-gray-700 mb-1">CVC</label>
+                                        <input type="text" id="checkout-cvc" placeholder="123" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Order Summary -->
+                    <div class="bg-white rounded-2xl shadow-xl p-8 h-fit sticky top-24">
+                        <h3 class="text-2xl font-semibold mb-6">3. Your Order</h3>
+                        <div id="checkout-order-summary" class="space-y-4 mb-6 max-h-64 overflow-y-auto">
+                            <!-- Checkout summary items injected by JS -->
+                        </div>
+                        <div class="space-y-3 pt-6 border-t">
+                            <div class="flex justify-between text-gray-700">
+                                <span>Subtotal</span>
+                                <span id="checkout-subtotal">₹0</span>
+                            </div>
+                            <div class="flex justify-between text-gray-700">
+                                <span>Shipping</span>
+                                <span id="checkout-shipping">₹0</span>
+                            </div>
+                            <div class="flex justify-between text-gray-900 font-bold text-xl pt-3 border-t">
+                                <span>Total</span>
+                                <span id="checkout-total">₹0</span>
+                            </div>
+                        </div>
+                        <button id="place-order-btn" class="w-full mt-6 bg-pink-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-pink-700 transition-colors">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Success Section (Hidden) -->
+        <section id="success-section" class="page-section">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+                <div class="max-w-lg mx-auto bg-white p-12 rounded-2xl shadow-xl">
+                    <svg class="w-24 h-24 text-green-500 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Order Placed!</h2>
+                    <p class="text-lg text-gray-700 mb-8">
+                        Thank you for your purchase! Your personalized crochet item is now being crafted. We'll send you an email with tracking details soon.
+                    </p>
+                    <a href="#home" class="nav-link inline-block bg-pink-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-pink-700 transition-colors">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-gray-900 text-gray-300 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#home" class="text-3xl font-brand text-white nav-link">
+                        Riyonabh
+                    </a>
+                    <p class="mt-2 text-gray-400">Crafting your crochet dreams.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#new-products" class="hover:text-pink-400 nav-link">New Products</a></li>
+                        <li><a href="#trending" class="hover:text-pink-400 nav-link">Trending</a></li>
+                        <li><a href="#home" class="hover:text-pink-400 nav-link">All Products</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="tel:+919356640672" class="hover:text-pink-400">Contact (+91 93566 40672)</a></li>
+                        <li><a href="#" class="hover:text-pink-400">FAQ</a></li>
+                        <li><a href="#" class="hover:text-pink-400">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/riyonabh?igsh=MTNlcWd6MWkzYTNxZw==" target="_blank" class="text-gray-400 hover:text-pink-400" aria-label="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 12.315 2zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm6.406-11.845a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z" clip-rule="evenodd" /></svg>
+                        </a>
+                        <!-- Removed Facebook and Twitter, kept Instagram as requested -->
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2025 Riyonabh. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Custom Modal -->
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    <div id="modal" class="modal bg-white rounded-2xl shadow-xl p-8 w-full max-w-md m-4">
+        <div class="flex justify-between items-center mb-4">
+            <h3 id="modal-title" class="text-2xl font-bold">Modal Title</h3>
+            <button id="modal-close-btn" class="text-gray-500 hover:text-gray-800">&times;</button>
+        </div>
+        <p id="modal-body" class="text-gray-700">Modal content goes here.</p>
+        <button id="modal-action-btn" class="mt-6 w-full bg-pink-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-pink-700">OK</button>
+    </div>
+
+
+    <script>
+        // --- DATABASE SIMULATION ---
+        // Updated with your 10 products, Rupee prices, and real image filenames
+        const productsDB = {
+            1: {
+                id: 1,
+                name: "Luffy Plushie",
+                price: 899,
+                description: "The future Pirate King, in cuddly crochet form! A perfect gift for any One Piece fan. Made with soft, premium yarn.",
+                imageUrl: "luffy1.jpg",
+                personalization: [
+                    { type: 'text', label: 'Embroider Name (Optional)', placeholder: 'Max 8 chars' },
+                    { type: 'textarea', label: 'Special Instructions', placeholder: 'e.g., add a scar under the eye' }
+                ]
+            },
+            2: {
+                id: 2,
+                name: "Cute Penguin Plush",
+                price: 749,
+                description: "An adorable penguin plush, complete with a tiny red heart. Perfect for winter cuddles and gifting.",
+                imageUrl: "peng.jpg",
+                personalization: [
+                    { type: 'color', label: 'Heart Color', options: ['Red', 'Pink', 'Blue'] },
+                    { type: 'text', label: 'Embroider Initials (Optional)', placeholder: 'e.g., P.B.' }
+                ]
+            },
+            3: {
+                id: 3,
+                name: "Red Ribbon Bag",
+                price: 1299,
+                description: "A gorgeous and attractive red bag, woven with satin ribbons. This statement piece is perfect for parties and special events.",
+                imageUrl: "bag.jpg",
+                personalization: [
+                    { type: 'color', label: 'Ribbon Color', options: ['Red', 'Black', 'White', 'Pink'] }
+                ]
+            },
+            4: {
+                id: 4,
+                name: "Bubblegum Jellyfish",
+                price: 499,
+                description: "Hello there! This is the bubblegum-jellyfish, here to make your hanging space look more beautiful. Perfect for balconies, windows, or car mirrors.",
+                imageUrl: "jelly.jpg",
+                personalization: [
+                    { type: 'color', label: 'Head Color', options: ['White', 'Light Pink', 'Light Blue'] },
+                    { type: 'color', label: 'Tentacle Color', options: ['Hot Pink', 'White', 'Purple'] }
+                ]
+            },
+            5: {
+                id: 5,
+                name: "Flower Mala / Toran",
+                price: 699,
+                description: "A beautiful, reusable decorative flower string. Perfect for festivals, poojas, or as a door hanging (Toran). Hand-crocheted with lovely details.",
+                imageUrl: "haar.jpg",
+                personalization: [
+                    { type: 'color', label: 'Main Flower Color', options: ['Pink', 'Yellow', 'Red', 'White'] },
+                    { type: 'text', label: 'Desired Length (e.g., 3 feet)', placeholder: 'Standard is 2.5 feet' }
+                ]
+            },
+            6: {
+                id: 6,
+                name: "Sunflower in Pot",
+                price: 399,
+                description: "A forever-bright sunflower for your desk or window. It never needs water and brings cheer all year round!",
+                imageUrl: "smallpot.jpg",
+                personalization: [
+                    { type: 'color', label: 'Pot Color', options: ['Brown', 'Terracotta', 'White'] }
+                ]
+            },
+            7: {
+                id: 7,
+                name: "Evil Eye Airpod Case",
+                price: 299,
+                description: "Protect your tech with this stylish, protective charm. This crochet evil eye case fits standard Airpods and keeps them safe from scratches.",
+                imageUrl: "case.jpg",
+                personalization: [
+                    { type: 'select', label: 'Airpods Model', options: ['Airpods 1/2', 'Airpods 3', 'Airpods Pro', 'Airpods Pro 2'] }
+                ]
+            },
+            8: {
+                id: 8,
+                name: "Crochet Flower Gajra",
+                price: 349,
+                description: "A beautiful, reusable white flower gajra (hair accessory) for buns and braids. Perfect for weddings, festivals, and special occasions.",
+                imageUrl: "gajra.jpg",
+                personalization: [
+                    { type: 'color', label: 'Leaf/Vine Color', options: ['Green', 'Gold', 'Silver'] }
+                ]
+            },
+            9: {
+                id: 9,
+                name: "Ballerina Mouse Plushie",
+                price: 699,
+                description: "A stunning and soft ballerina mouse, ready to dance! Dressed in a cute pink tutu, this plushie is a perfect gift for aspiring dancers.",
+                imageUrl: "mouse.jpg",
+                personalization: [
+                    { type: 'color', label: 'Tutu Color', options: ['Pink', 'Purple', 'White', 'Blue'] },
+                    { type: 'text', label: 'Embroider Name (Optional)', placeholder: 'On the foot' }
+                ]
+            },
+            10: {
+                id: 10,
+                name: '"Best Seller" Sunflower',
+                price: 249,
+                description: "Our best seller! A single, beautifully wrapped sunflower. The perfect small gift to show you care. Comes with gift wrapping.",
+                imageUrl: "sunflower.jpg",
+                personalization: [
+                    { type: 'textarea', label: 'Add a Gift Note', placeholder: 'e.g., "Get well soon!"' }
+                ]
+            }
+        };
+
+        // --- GLOBAL STATE ---
+        let cart = []; // This will hold our cart items
+        let currentProductId = null;
+
+        // --- DOM ELEMENTS ---
+        const pageSections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const productLinks = document.querySelectorAll('.product-link');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const cartBadge = document.getElementById('cart-badge');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartEmptyMsg = document.getElementById('cart-empty-msg');
+        const cartSummary = document.getElementById('cart-summary');
+        const checkoutOrderSummary = document.getElementById('checkout-order-summary');
+        
+        // Modal elements
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const modalActionBtn = document.getElementById('modal-action-btn');
+
+        // --- NAVIGATION ---
+        
+        // Function to show a specific section
+        function showSection(sectionId) {
+            // Remove 'active' from all sections
+            pageSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Add 'active' to the target section
+            const targetSection = document.getElementById(sectionId + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            } else {
+                // Default to home if section not found
+                document.getElementById('home-section').classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Close mobile menu
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Handle all nav link clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const hash = new URL(link.href).hash;
+                
+                if(hash === '#new-products' || hash === '#trending') {
+                    // Special case: go to home and scroll
+                    showSection('home');
+                    setTimeout(() => {
+                        document.querySelector(hash).scrollIntoView({ behavior: 'smooth' });
+                    }, 0);
+                } else if (hash.startsWith('#product/')) {
+                    // This is handled by product link listeners
+                } else {
+                    const sectionId = hash.substring(1); // remove '#'
+                    showSection(sectionId);
+                }
+                
+                // Update URL hash
+                history.pushState(null, null, hash);
+            });
+        });
+        
+        // Handle product link clicks
+        function attachProductLinkListeners() {
+            document.querySelectorAll('.product-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const hash = new URL(link.href).hash;
+                    const productId = hash.split('/')[1];
+                    currentProductId = productId;
+                    renderProductDetail(productId);
+                    showSection('product');
+                    history.pushState(null, null, hash);
+                });
+            });
+        }
+        attachProductLinkListeners(); // Initial call
+        
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash || '#home';
+            if (hash.startsWith('#product/')) {
+                const productId = hash.split('/')[1];
+                currentProductId = productId;
+                renderProductDetail(productId);
+                showSection('product');
+            } else {
+                showSection(hash.substring(1));
+            }
+        });
+
+        // Handle initial page load based on hash
+        function handleInitialLoad() {
+            const hash = window.location.hash || '#home';
+            if (hash.startsWith('#product/')) {
+                const productId = hash.split('/')[1];
+                currentProductId = productId;
+                renderProductDetail(productId);
+                showSection('product');
+            } else {
+                showSection(hash.substring(1));
+            }
+        }
+        handleInitialLoad(); // Call on load
+        
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- PRODUCT DETAIL PAGE ---
+        
+        function renderProductDetail(productId) {
+            const product = productsDB[productId];
+            if (!product) {
+                showSection('home');
+                return;
+            }
+
+            const contentEl = document.getElementById('product-detail-content');
+            
+            // Generate personalization HTML
+            let personalizationHtml = '';
+            if (product.personalization) {
+                product.personalization.forEach((field, index) => {
+                    const fieldId = `personalization-${field.type}-${index}`;
+                    personalizationHtml += `<div class="mb-4">`;
+                    personalizationHtml += `<label for="${fieldId}" class="block text-sm font-medium text-gray-700 mb-2">${field.label}</label>`;
+                    
+                    if (field.type === 'color') {
+                        personalizationHtml += `<fieldset class="mt-2"><div class="flex items-center space-x-3">`;
+                        field.options.forEach((color, oIndex) => {
+                            personalizationHtml += `
+                                <label class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none" title="${color}">
+                                    <input type="radio" name="${fieldId}" value="${color}" class="sr-only" ${oIndex === 0 ? 'checked' : ''}>
+                                    <span style="background-color: ${color.toLowerCase().replace(/ /g, '')}" class="h-8 w-8 rounded-full border border-black border-opacity-10 ring-2 ring-transparent ring-offset-1"></span>
+                                </label>
+                            `;
+                        });
+                        personalizationHtml += `</div></fieldset>`;
+                    } else if (field.type === 'text') {
+                        personalizationHtml += `<input type="text" id="${fieldId}" name="${fieldId}" placeholder="${field.placeholder || ''}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">`;
+                    } else if (field.type === 'textarea') {
+                        personalizationHtml += `<textarea id="${fieldId}" name="${fieldId}" rows="3" placeholder="${field.placeholder || ''}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500"></textarea>`;
+                    } else if (field.type === 'select') {
+                        personalizationHtml += `<select id="${fieldId}" name="${fieldId}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500 bg-white">`;
+                        field.options.forEach(option => {
+                            personalizationHtml += `<option value="${option}">${option}</option>`;
+                        });
+                        personalizationHtml += `</select>`;
+                    }
+                    
+                    personalizationHtml += `</div>`;
+                });
+            }
+
+            contentEl.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Product Images -->
+                    <div>
+                        <img src="${product.imageUrl}" alt="${product.name}" class="w-full rounded-2xl shadow-lg object-cover mb-4">
+                        <!-- Removed thumbnail gallery as we only have one image each -->
+                    </div>
+                    
+                    <!-- Product Info & Personalization -->
+                    <div>
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">${product.name}</h2>
+                        <p class="text-3xl font-bold text-pink-600 mb-6">₹${product.price}</p>
+                        <p class="text-gray-700 text-lg mb-8">${product.description}</p>
+                        
+                        <form id="personalization-form" data-product-id="${product.id}">
+                            <h3 class="text-2xl font-semibold mb-4">Personalize Your Item</h3>
+                            ${personalizationHtml}
+                            
+                            <button type="submit" class="w-full mt-6 bg-pink-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-pink-700 transition-colors">
+                                Add to Cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+            
+            // Add listener to the new form
+            document.getElementById('personalization-form').addEventListener('submit', handleAddToCart);
+        }
+        
+        // --- LOGIN/SIGNUP TOGGLE ---
+        document.getElementById('show-signup').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-form').classList.remove('hidden');
+        });
+        
+        document.getElementById('show-login').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+        });
+
+        // --- CUSTOM MODAL ---
+        function showModal(title, body, buttonText = 'OK', onAction = null) {
+            modalTitle.textContent = title;
+            modalBody.textContent = body;
+            modalActionBtn.textContent = buttonText;
+            
+            modalBackdrop.classList.add('active');
+            modal.classList.add('active');
+
+            const close = () => {
+                modalBackdrop.classList.remove('active');
+                modal.classList.remove('active');
+                if (onAction) {
+                    modalActionBtn.removeEventListener('click', onAction);
+                }
+            };
+            
+            modalCloseBtn.onclick = close;
+            modalBackdrop.onclick = close;
+            
+            if (onAction) {
+                modalActionBtn.addEventListener('click', () => {
+                    onAction();
+                    close();
+                });
+            } else {
+                modalActionBtn.onclick = close;
+            }
+        }
+        
+        // --- CART LOGIC ---
+       // --- CART LOGIC ---
+        function handleAddToCart(e) {
+            e.preventDefault();
+            const form = e.target;
+            const productId = form.dataset.productId;
+            const product = productsDB[productId];
+            
+            const formData = new FormData(form);
+            const personalizationDetails = [];
+            for (let [name, value] of formData.entries()) {
+                // Find the label for this field
+                // This was the line with the bug. It's now fixed.
+                const labelEl = form.querySelector(`label[for="${name}"]`);
+                let label = name; // Fallback if label not found
+
+                if (labelEl) {
+                    label = labelEl.textContent;
+                }
+                
+                if(value) { // Only add if user entered something
+                    personalizationDetails.push({ label, value });
+                }
+            }
+            
+            const cartItem = {
+                id: `${productId}-${Date.now()}`, // Unique ID for each item
+                productId: productId,
+                name: product.name,
+                price: product.price,
+                imageUrl: product.imageUrl, // Use main image
+                personalization: personalizationDetails
+            };
+            
+            cart.push(cartItem);
+            updateCart();
+            
+            showModal(
+                'Added to Cart!',
+                `"${product.name}" has been added to your cart.`,
+                'View Cart',
+                () => {
+                    showSection('cart');
+                    history.pushState(null, null, '#cart');
+                }
+            );
+        }
+
+        function removeFromCart(cartItemId) {
+            cart = cart.filter(item => item.id !== cartItemId);
+            updateCart();
+        }
+
+        function updateCart() {
+            // Update badge
+            if (cart.length > 0) {
+                cartBadge.textContent = cart.length;
+                cartBadge.classList.remove('hidden');
+            } else {
+                cartBadge.classList.add('hidden');
+            }
+
+            // Update cart page
+            renderCartPage();
+            // Update checkout page
+            renderCheckoutSummary();
+        }
+
+        function renderCartPage() {
+            if (cart.length === 0) {
+                cartEmptyMsg.classList.remove('hidden');
+                cartItemsContainer.innerHTML = ''; // Clear items
+                cartSummary.classList.add('hidden');
+            } else {
+                cartEmptyMsg.classList.add('hidden');
+                cartSummary.classList.remove('hidden');
+                
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-start bg-white p-4 rounded-lg shadow-sm mb-4" data-id="${item.id}">
+                        <img src="${item.imageUrl}" alt="${item.name}" class="w-24 h-24 rounded-lg object-cover mr-4">
+                        <div class="flex-grow">
+                            <h4 class="text-lg font-semibold">${item.name}</h4>
+                            ${item.personalization.map(p => `
+                                <p class="text-sm text-gray-600"><strong>${p.label}:</strong> ${p.value}</p>
+                            `).join('')}
+                        </div>
+                        <div class="text-right">
+                            <p class="text-lg font-bold text-pink-600">₹${item.price}</p>
+                            <button class="remove-from-cart-btn text-sm text-red-500 hover:underline mt-2" data-id="${item.id}">Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add listeners to remove buttons
+                document.querySelectorAll('.remove-from-cart-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const cartItemId = e.target.dataset.id;
+                        removeFromCart(cartItemId);
+                    });
+                });
+            }
+            
+            // Update totals
+            const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
+            const shipping = cart.length > 0 ? 80 : 0; // Updated shipping
+            const total = subtotal + shipping;
+            
+            document.getElementById('cart-subtotal').textContent = `₹${subtotal}`;
+            document.getElementById('cart-shipping').textContent = `₹${shipping}`;
+            document.getElementById('cart-total').textContent = `₹${total}`;
+        }
+        
+        // --- CHECKOUT LOGIC ---
+        
+        function renderCheckoutSummary() {
+            if (cart.length === 0) {
+                checkoutOrderSummary.innerHTML = '<p class="text-gray-600">Your cart is empty.</p>';
+            } else {
+                checkoutOrderSummary.innerHTML = cart.map(item => `
+                    <div class="flex justify-between items-start">
+                        <div class="flex">
+                            <img src="${item.imageUrl}" alt="${item.name}" class="w-12 h-12 rounded-md object-cover mr-3">
+                            <div>
+                                <h5 class="font-semibold text-sm">${item.name}</h5>
+                                <p class="text-xs text-gray-500">1 x ₹${item.price}</p>
+                            </div>
+                        </div>
+                        <span class="font-semibold text-sm">₹${item.price}</span>
+                    </div>
+                `).join('');
+            }
+            
+            // Update totals
+            const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
+            const shipping = cart.length > 0 ? 80 : 0; // Updated shipping
+            const total = subtotal + shipping;
+            
+            document.getElementById('checkout-subtotal').textContent = `₹${subtotal}`;
+            document.getElementById('checkout-shipping').textContent = `₹${shipping}`;
+            document.getElementById('checkout-total').textContent = `₹${total}`;
+        }
+        
+        // Handle "Place Order"
+        document.getElementById('place-order-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Simple validation: check if form is filled
+            const form = document.getElementById('checkout-form');
+            if(form.checkValidity()) {
+                // Simulate order placement
+                cart = []; // Empty the cart
+                updateCart(); // Update UI
+                showSection('success'); // Show success message
+                history.pushState(null, null, '#success');
+            } else {
+                form.reportValidity(); // Show native HTML5 validation errors
+                showModal('Incomplete Form', 'Please fill out all required shipping and payment details.');
+            }
+        });
+        
+    </script>
+</body>
+</html>
